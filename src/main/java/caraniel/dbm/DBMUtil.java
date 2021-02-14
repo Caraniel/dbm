@@ -1,5 +1,6 @@
 package caraniel.dbm;
 
+import caraniel.dbm.bean.DBConfig;
 import org.apache.commons.dbcp.ConnectionFactory;
 import org.apache.commons.dbcp.DriverManagerConnectionFactory;
 import org.apache.commons.dbcp.PoolableConnectionFactory;
@@ -11,6 +12,12 @@ import javax.sql.DataSource;
 
 public class DBMUtil
 {
+  public static DataSource getDataSource(DBConfig dbConfig)
+    throws Exception
+  {
+    return getDataSource(dbConfig.getDriver(), dbConfig.getUrl(), dbConfig.getUser(), dbConfig.getPassword());
+  }
+
   public static DataSource getDataSource(String driver, String url, String user, String password)
     throws Exception
   {
